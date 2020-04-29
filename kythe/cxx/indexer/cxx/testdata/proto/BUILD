@@ -34,6 +34,7 @@ cc_proto_verifier_test(
         "//kythe/testdata/indexers/proto:testdata3b.proto",
         "//kythe/testdata/indexers/proto:testdata3.proto",
     ],
+    tags = ["manual"],
 )
 
 cc_proto_verifier_test(
@@ -50,4 +51,5 @@ cc_proto_verifier_test(
         "//kythe/testdata/indexers/proto:testdata4b.proto",
         "//kythe/testdata/indexers/proto:testdata4a.proto",
     ],
+    tags = ["manual"],
 )

@@ -25,13 +25,14 @@ def cc_proto_verifier_test(
         srcs,
         proto_lib,
         proto_srcs = [],
-	proto_deps = [],
+        proto_deps = [],
         verifier_opts = [
             "--ignore_dups",
             # Else the verifier chokes on the inconsistent marked source from the protobuf headers.
             "--convert_marked_source",
         ],
-        size = "small"):
+        size = "small",
+        tags = []):
     """Verify cross-language references between C++ and Proto.
 
     Args:
@@ -49,7 +50,8 @@ def cc_proto_verifier_test(
         proto_extract_kzip,
         name = name + "_proto_kzip",
         srcs = proto_srcs,
-	deps = proto_deps,
+        deps = proto_deps,
+        tags = tags,
     )
 
     proto_entries = _invoke(
@@ -58,6 +60,7 @@ def cc_proto_verifier_test(
         indexer = "//kythe/cxx/indexer/proto:indexer",
         opts = ["--index_file"],
         deps = [proto_kzip],
+        tags = tags,
     )
 
     proto_libs = [
@@ -65,7 +68,8 @@ def cc_proto_verifier_test(
             cc_kythe_proto_library,
             name = name + "_cc_proto",
             deps = [proto_lib] + proto_deps,
-        )
+            tags = tags,
+        ),
     ]
 
     cc_kzip = _invoke(
@@ -73,6 +77,7 @@ def cc_proto_verifier_test(
         name = name + "_cc_kzip",
         srcs = srcs,
         deps = proto_libs,
+        tags = tags,
     )
 
     cc_entries = _invoke(
@@ -88,6 +93,7 @@ def cc_proto_verifier_test(
             "--experimental_drop_instantiation_independent_data",
             "--noemit_anchors_on_builtins",
         ],
+        tags = tags,
     )
 
     return _invoke(
@@ -100,6 +106,7 @@ def cc_proto_verifier_test(
             cc_entries,
             proto_entries,
         ],
+        tags = tags,
     )
 
 def _invoke(rulefn, name, **kwargs):
