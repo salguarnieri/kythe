@@ -51,6 +51,7 @@ CxxCompilationUnits = provider(
 )
 
 _VERIFIER_FLAGS = {
+    "annotated_graphviz": True,
     "check_for_singletons": False,
     "convert_marked_source": False,
     "goal_prefix": "//-",

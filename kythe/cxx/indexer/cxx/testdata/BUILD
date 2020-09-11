@@ -2771,6 +2771,13 @@ objc_indexer_test(
 )
 
 objc_indexer_test(
+    name = "class_property",
+    srcs = ["objc/class_property.m"],
+    ignore_dups = True,
+    tags = ["objc"],
+)
+
+objc_indexer_test(
     name = "compatibility_alias",
     srcs = ["objc/compatibility_alias.m"],
     tags = ["objc"],
@@ -3199,6 +3206,13 @@ objc_indexer_test(
 objc_indexer_test(
     name = "protocol_param_long_enough_to_hash",
     srcs = ["objc/protocol_param_long_enough_to_hash.m"],
+    ignore_dups = True,
+    tags = ["objc"],
+)
+
+objc_indexer_test(
+    name = "protocol_property",
+    srcs = ["objc/protocol_property.m"],
     ignore_dups = True,
     tags = ["objc"],
 )
