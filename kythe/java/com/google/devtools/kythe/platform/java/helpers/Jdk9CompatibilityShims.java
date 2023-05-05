@@ -17,7 +17,6 @@
 package com.google.devtools.kythe.platform.java.helpers;
 
 import com.google.auto.service.AutoService;
-import com.google.common.collect.ImmutableList;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.JCTree.JCCase;
 import com.sun.tools.javac.tree.JCTree.JCEnhancedForLoop;
@@ -38,7 +37,7 @@ public final class Jdk9CompatibilityShims implements JdkCompatibilityShims {
 
   /** Return the list of expressions from a JCCase object */
   @Override
-  public ImmutableList<JCExpression> getCaseExpressions(JCCase tree) {
+  public List<JCExpression> getCaseExpressions(JCCase tree) {
     JCExpression expr = tree.getExpression();
     if (expr == null) {
       return ImmutableList.of();
