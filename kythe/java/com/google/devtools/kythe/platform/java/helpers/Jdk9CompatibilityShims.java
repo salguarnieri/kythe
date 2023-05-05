@@ -17,6 +17,7 @@
 package com.google.devtools.kythe.platform.java.helpers;
 
 import com.google.auto.service.AutoService;
+import com.google.common.collect.ImmutableList;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.tree.JCTree.JCCase;
 import com.sun.tools.javac.tree.JCTree.JCEnhancedForLoop;
